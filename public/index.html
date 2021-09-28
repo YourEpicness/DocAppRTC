@@ -11,8 +11,12 @@
     <link rel="stylesheet" href="stylesheets/screen.css" />
   </head>
   <body>
-    <h1>DocAppRTC Waiting Room</h1>
+    <header id="header">
+      <h1>DocAppRTC Waiting Room</h1>
+      <button type="button" id="call-button">Join Call</button>
+    </header>
     <video id="self" autoplay muted playsinline></video>
+    <script src="/socket.io/socket.io.js"></script>
     <script src="javascripts/main.js"></script>
   </body>
 </html>
