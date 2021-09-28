@@ -12,10 +12,14 @@
   </head>
   <body>
     <header id="header">
-      <h1>DocAppRTC Waiting Room</h1>
+      <h1>Welcome!</h1>
+      <h2>DocAppRTC Waiting Room</h2>
       <button type="button" id="call-button">Join Call</button>
     </header>
-    <video id="self" autoplay muted playsinline></video>
+    <article id="videos">
+      <video id="self" autoplay muted playsinline></video>
+      <video id="peer" autoplay muted playsinline></video>
+    </article>
     <script src="/socket.io/socket.io.js"></script>
     <script src="javascripts/main.js"></script>
   </body>
