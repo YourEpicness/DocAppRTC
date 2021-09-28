@@ -21,12 +21,19 @@ async function requestUserMedia(constraints) {
 }
 
 // Socket Server Events and Callbacks
+const namespace =window.location.hash.substr(1);
 
+const sc = io(`/${namespace}`, {autoConnect: false});
 const button = document.querySelector('#call-button');
 const sc = io({autoConnect: false});
 button.addEventListener('click', () => {
 	sc.open();
 })
+
 sc.on('connect', () => {
 	console.log('Connected to socket.io instance');
+})
+
+sc.on('connected peer', () => {
+	console.log('Heard a peer connect!');
 })

@@ -20,8 +20,9 @@ app.use("/users", usersRouter);
 
 const namespaces = io.of(/^\/[0-9]{6}&/);
 
-io.on('connection', (socket) => {
-    console.log('Heard a connection to the socket.io server');
+namespaces.on('connection', (socket) => {
+    const namespace = socket.nsp;
+    socket.broadcast.emit('Connected peer');
 })
 
 module.exports = {app, io};
