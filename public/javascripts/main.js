@@ -30,6 +30,21 @@ function displayStream(selector, stream) {
 	video.srcObject = stream;
 }
 
+// DOM Events
+
+function handleButton(e) {
+	const button = e.target;
+	if (button.className === 'join') {
+		button.className = 'leave';
+		button.innerText = 'Leave Call';
+		joinCall();
+	} else {
+		button.className = 'join';
+		button.innerText = 'Join Call';
+		leaveCall();
+	}
+}
+
 // Socket Server Events and Callbacks
 const namespace = prepareNamespace(window.location.hash, true);
 
@@ -52,6 +67,9 @@ function joinCall() {
 }
 
 function leaveCall() {
+	$peer.connection.close();
+	$peer.connection = new RTCPeerConnection($self.rtcConfig);
+	displayStream('#peer', null)
 	sc.close();
 }
 
@@ -109,6 +127,11 @@ function handleScConnectedPeer() {
 
 function handleScDisconnectedPeer() {
 	console.log('Heard disconnected peer event!');
+	displayStream('#peer', null);
+	$peer.connection.close();
+	$peer.connection = new RTCPeerConnection($self.rtcConfig);
+	registerRtcEvents($peer);
+	establishCallFeatures($peer);
 }
 
 async function handleScSignal({ description, candidate}) {
