@@ -6,13 +6,17 @@ const $self = {
     audio: false,
     video: true,
   },
+  isHost: false,
+  isMakingOffer: false,
+  isIgnoringOffer: false,
+  isSettingRemoteAnswerPending: false
 };
 
 const $peer = {
   connection: new RTCPeerConnection(),
 };
 
-// requestUserMedia($self.constraints);
+requestUserMedia($self.constraints);
 
 async function requestUserMedia(constraints) {
   const video = document.querySelector("#self");
@@ -27,7 +31,7 @@ const sc = io(`/${namespace}`, {autoConnect: false});
 
 registerScEvents();
 
-// DOM Events
+// DOM Elements
 
 const button = document.querySelector('#call-button');
 
@@ -35,10 +39,45 @@ button.addEventListener('click', joinCall);
 
 function joinCall() {
 	sc.open();
+	registerRtcEvents($peer);
+	establishCallFeatures($peer);
 }
 
 function leaveCall() {
 	sc.close();
+}
+
+// WebRTC Events
+function establishCallFeatures(peer) {
+	peer.conneciton.addTrack($self.stream.getTracks()[0],
+	$self.stream);
+}
+
+function registerRtcEvents(peer) {
+	peer.connection.onnegotiationneeded = handleRtcNegotiation;
+	peer.connection.onicecandidate = handleIceCandidate;
+	peer.connection.untrack = handleRtcTrack;
+}
+
+async function handleRtcNegotation() {
+	console.log('RTC negotiation needed...');
+	// send SDP description
+	$self.isMakingOffer = true;
+	await $peer.connection.setLocalDescription();
+	sc.emit('signal', { 
+		description: $peer.connection.setLocalDescription(),
+	})
+	$self.isMakingOffer = false;
+}
+
+function handleIceCandidate({ candidate }) {
+	sc.emit('signal', {
+		candidate: candidate
+	})
+}
+
+function handleRtcTrack() {
+	// attach our track to the DOM
 }
 
 // Signaling Channel Events
@@ -56,14 +95,20 @@ function handleScConnect() {
 
 function handleScConnectedPeer() {
 	console.log('Heard connected peer event!');
+	$self.isHost = true;
 }
 
 function handleScDisconnectedPeer() {
 	console.log('Heard disconnected peer event!');
 }
 
-async function handleScSignal() {
+async function handleScSignal({ description, candidate}) {
 	console.log('Heard signal event!');
+	if(description) {
+		console.log('Received SDP Signal:', description);
+	} else if (candidate) {
+		console.log('Received ICE candidatE:', candidate);
+	}
 }
 
 // Utility Functions
