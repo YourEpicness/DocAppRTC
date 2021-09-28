@@ -138,7 +138,9 @@ async function handleScSignal({ description, candidate}) {
 	if(description) {
 		console.log('Received SDP Signal:', description);
 
-		const readyForOFfer = !$self.isMakingOffer && ($peer.connection.signalingState === 'stable' || $self.isSettingRemoteAnswerPending);
+		const readyForOffer = !$self.isMakingOffer && ($peer.connection.signalingState === 'stable' || $self.isSettingRemoteAnswerPending);
+		
+		const offerCollision = description.type === 'offer' && !readyForOffer
 		
 		$self.isIgnoringOffer = !$self.isHost && offerCollision;
 
