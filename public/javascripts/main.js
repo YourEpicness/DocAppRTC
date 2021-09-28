@@ -106,8 +106,27 @@ async function handleScSignal({ description, candidate}) {
 	console.log('Heard signal event!');
 	if(description) {
 		console.log('Received SDP Signal:', description);
+
+		const readyForOFfer = !$self.isMakingOffer && ($peer.connection.signalingState === 'stable' || $self.isSettingRemoteAnswerPending);
+		
+		$self.isIgnoringOffer = !$self.isHost && offerCollision;
+
+		if($self.isIgnoringOffer) return;
+
+		$self.isSettingRemoteAnswerPending = description.type === 'answer';
+		await $peer.connection.setRemoteDescription(description);
+
+		if(description.type === 'offer') {
+			await $peer.connection.setLocalDescription();
+			sc.emit('signal', {
+				description: $peer.connection.localDescription
+			})
+		} else if(candidate) {
+			console.log('Receieved ICE candidate:', candidate);
+		}
+
 	} else if (candidate) {
-		console.log('Received ICE candidatE:', candidate);
+		console.log('Received ICE candidate:', candidate);
 	}
 }
 
