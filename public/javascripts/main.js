@@ -11,6 +11,7 @@ const $self = {
 const $peer = {
   connection: new RTCPeerConnection(),
 };
+
 requestUserMedia($self.constraints);
 
 async function requestUserMedia(constraints) {
@@ -18,3 +19,10 @@ async function requestUserMedia(constraints) {
   $self.stream = await navigator.mediaDevices.getUserMedia(constraints);
   video.srcObject = $self.stream;
 }
+
+// Socket Server Events and Callbacks
+
+const sc = io();
+sc.on('connect', () => {
+	console.log('Connected to socket.io instance');
+})
