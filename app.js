@@ -23,6 +23,16 @@ const namespaces = io.of(/^\/[0-9]{6}&/);
 namespaces.on('connection', (socket) => {
     const namespace = socket.nsp;
     socket.broadcast.emit('Connected peer');
+
+    // listen for signals
+    socket.on('signal', (signal) => {
+        socket.broadcast.emit('signal', signal)
+    })
+    // listen for disconnects
+    socket.on('disconnect', () => {
+        namespace.emit('disconnected peer');
+    })
+    
 })
 
 module.exports = {app, io};

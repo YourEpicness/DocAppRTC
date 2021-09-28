@@ -12,7 +12,7 @@ const $peer = {
   connection: new RTCPeerConnection(),
 };
 
-requestUserMedia($self.constraints);
+// requestUserMedia($self.constraints);
 
 async function requestUserMedia(constraints) {
   const video = document.querySelector("#self");
@@ -24,16 +24,36 @@ async function requestUserMedia(constraints) {
 const namespace =window.location.hash.substr(1);
 
 const sc = io(`/${namespace}`, {autoConnect: false});
+
+registerScEvents();
+
+// DOM Events
+
 const button = document.querySelector('#call-button');
 const sc = io({autoConnect: false});
 button.addEventListener('click', () => {
 	sc.open();
 })
 
-sc.on('connect', () => {
-	console.log('Connected to socket.io instance');
-})
+function registerScEvents() {
+	sc.on('connect', handleScConnect);
+	sc.on('connected peer', handleScConnectedPeer);
+	sc.on('signal', handleScSignal);
+	sc.on('disconnected peer', handleScDisconnectedPeer);
+}
 
-sc.on('connected peer', () => {
-	console.log('Heard a peer connect!');
-})
+function handleScConnect() {
+	console.log('Connected to signaling channel!');
+}
+
+function handleScConnectedPeer() {
+	console.log('Heard connected peer event!');
+}
+
+function handleScDisconnectedPeer() {
+	console.log('Heard disconnected peer event!');
+}
+
+async function handleScSignal() {
+	console.log('Heard signal event!');
+}
