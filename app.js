@@ -18,6 +18,8 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 
+const namespaces = io.of(/^\/[0-9]{6}&/);
+
 io.on('connection', (socket) => {
     console.log('Heard a connection to the socket.io server');
 })
