@@ -13,7 +13,7 @@ const $self = {
 };
 
 const $peer = {
-  connection: new RTCPeerConnection(),
+  connection: new RTCPeerConnection($self.rtcConfig),
 };
 
 requestUserMedia($self.constraints);
@@ -56,16 +56,16 @@ function establishCallFeatures(peer) {
 function registerRtcEvents(peer) {
 	peer.connection.onnegotiationneeded = handleRtcNegotiation;
 	peer.connection.onicecandidate = handleIceCandidate;
-	peer.connection.untrack = handleRtcTrack;
+	peer.connection.ontrack = handleRtcTrack;
 }
 
-async function handleRtcNegotation() {
+async function handleRtcNegotiation() {
 	console.log('RTC negotiation needed...');
 	// send SDP description
 	$self.isMakingOffer = true;
 	await $peer.connection.setLocalDescription();
 	sc.emit('signal', { 
-		description: $peer.connection.setLocalDescription(),
+		description: $peer.connection.localDescription,
 	})
 	$self.isMakingOffer = false;
 }
