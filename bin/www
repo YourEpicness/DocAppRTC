@@ -30,7 +30,7 @@ var server = https.createServer(config, app)
 /**
  * Listen on provided port, on all network interfaces.
  */
-server.attach(io);
+io.attach(server);
 server.listen(port, () => {
 	console.log(`Listening on port ${port}`)
 })
