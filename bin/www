@@ -5,7 +5,7 @@
  */
 
 var { readFileSync } = require('fs')
-var app = require('../app')
+var {app, io} = require('../app')
 var debug = require('debug')('projectone:server')
 var https = require('https')
 
@@ -19,7 +19,7 @@ app.set('port', port)
 /**
  * Create HTTP server.
  */
-const { LOCALHOST_SSL_KEY, LOCALHOST_SSL_CERT } = process.env
+ const { LOCALHOST_SSL_KEY, LOCALHOST_SSL_CERT } = process.env
 const config = {
 	key: readFileSync(LOCALHOST_SSL_KEY),
 	cert: readFileSync(LOCALHOST_SSL_CERT),
@@ -30,7 +30,7 @@ var server = https.createServer(config, app)
 /**
  * Listen on provided port, on all network interfaces.
  */
-
+server.attach(io);
 server.listen(port, () => {
 	console.log(`Listening on port ${port}`)
 })
