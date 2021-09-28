@@ -37,6 +37,8 @@ const button = document.querySelector('#call-button');
 
 button.addEventListener('click', joinCall);
 
+document.querySelector('#header h1').innerText = `Welcome to Room #${namespace}`
+
 function joinCall() {
 	sc.open();
 	registerRtcEvents($peer);
