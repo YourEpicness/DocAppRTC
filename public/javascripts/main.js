@@ -21,7 +21,13 @@ requestUserMedia($self.constraints);
 async function requestUserMedia(constraints) {
   const video = document.querySelector("#self");
   $self.stream = await navigator.mediaDevices.getUserMedia(constraints);
-  video.srcObject = $self.stream;
+  displayStream('#self', $self.stream);
+}
+
+// User-Media/DOM
+function displayStream(selector, stream) {
+	const video = document.querySelector(selector);
+	video.srcObject = stream;
 }
 
 // Socket Server Events and Callbacks
@@ -80,6 +86,7 @@ function handleIceCandidate({ candidate }) {
 
 function handleRtcTrack() {
 	// attach our track to the DOM
+	displayStream('#peer', stream);
 }
 
 // Signaling Channel Events
