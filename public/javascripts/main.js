@@ -19,7 +19,6 @@ const $peer = {
 requestUserMedia($self.constraints);
 
 async function requestUserMedia(constraints) {
-  const video = document.querySelector("#self");
   $self.stream = await navigator.mediaDevices.getUserMedia(constraints);
   displayStream('#self', $self.stream);
 }
@@ -75,7 +74,7 @@ function leaveCall() {
 
 // WebRTC Events
 function establishCallFeatures(peer) {
-	peer.conneciton.addTrack($self.stream.getTracks()[0],
+	peer.connection.addTrack($self.stream.getTracks()[0],
 	$self.stream);
 }
 
@@ -102,7 +101,7 @@ function handleIceCandidate({ candidate }) {
 	})
 }
 
-function handleRtcTrack() {
+function handleRtcTrack({ track, streams: [stream]}) {
 	// attach our track to the DOM
 	displayStream('#peer', stream);
 }
