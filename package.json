@@ -4,7 +4,9 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "nodemon ./bin/www"
+    "compile:sass": "node-sass public/sass/styles.scss public/stylesheets/styles.css",
+    "dev:sass": "nodemon -e scss -x \"npm run compile:sass\"",
+    "dev": "npm run compile:sass && nodemon ./bin/www"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -12,5 +14,9 @@
     "express": "~4.16.1",
     "morgan": "~1.9.1",
     "socket.io": "^4.2.0"
+  },
+  "devDependencies": {
+    "node-sass": "^6.0.1",
+    "nodemon": "^2.0.13"
   }
 }
