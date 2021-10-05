@@ -18,11 +18,11 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 
-const namespaces = io.of(/^\/[0-9]{6}&/);
+const namespaces = io.of(/^\/[0-9]{6}$/);
 
 namespaces.on('connection', (socket) => {
     const namespace = socket.nsp;
-    socket.broadcast.emit('Connected peer');
+    socket.broadcast.emit('connected peer');
 
     // listen for signals
     socket.on('signal', (signal) => {

@@ -55,7 +55,7 @@ registerScEvents();
 
 const button = document.querySelector('#call-button');
 
-button.addEventListener('click', joinCall);
+button.addEventListener('click', handleButton);
 
 document.querySelector('#header h1').innerText = `Welcome to Room #${namespace}`
 
