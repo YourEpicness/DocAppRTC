@@ -20,16 +20,25 @@ html {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
+
+  h1 {
+    flex: 1 1 auto;
+  }
 }
 
-#header h1 {
-  flex: 1 1 auto;
+#videos {
+    border: 2px black solid;
+    
+    .peer {
+        border: 2px red solid;
+    }
+
+    .attendee {
+        font-weight: bold;
+    }
 }
 
-.access {
-  position: absolute;
-  left: -10000px;
-}
+
 
 button {
   font-family: inherit;
@@ -39,6 +48,7 @@ button {
   line-height: 1;
   padding: 13px;
 }
+
 .join {
   background: #092;
   color: #EEE;

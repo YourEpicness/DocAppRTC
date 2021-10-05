@@ -46,13 +46,15 @@ html {
   display: flex;
   flex-wrap: wrap;
   align-items: baseline; }
+  #header h1 {
+    flex: 1 1 auto; }
 
-#header h1 {
-  flex: 1 1 auto; }
-
-.access {
-  position: absolute;
-  left: -10000px; }
+#videos {
+  border: 2px black solid; }
+  #videos .peer {
+    border: 2px red solid; }
+  #videos .attendee {
+    font-weight: bold; }
 
 button {
   font-family: inherit;

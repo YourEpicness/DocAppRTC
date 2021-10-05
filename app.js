@@ -33,6 +33,6 @@ namespaces.on('connection', (socket) => {
         namespace.emit('disconnected peer');
     })
     
-})
+});
 
 module.exports = {app, io};
