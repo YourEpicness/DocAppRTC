@@ -42,7 +42,38 @@
           <video id="peer" autoplay playsinline></video>
           <span class="video-label">Doctor</span>
 
-    </article>
+        </div> 
+      </article>
+      <article class="chat">
+        <h2 class="header">Chat</h2>
+        <div class="summary">
+          <h3 class="summary__header"> Appointment Summary</h3>
+          <ul class="summary__text">
+            <li class="summary__title"> Name: <span class="text-field"> John Doe</span></li>
+            <li class="summary__title"> Reason for visit: <span class="text-field"> COVID symptoms</span></li>
+            <li class="summary__title"> Symptoms: <span class="text-field"> Sore throat, congestion </span></li>
+          </ul>
+        </div>
+  
+        <div class="message">
+          <ol id="chat-log">
+            <li>Doctor has joined the chat...</li>
+            <li>Patient has joined the chat...</li>
+          </ol>
+          <div class="chat-control">
+            <input type="text" placeholder="Say something!" class="chat-field">
+            <button class="send"> Send </button>
+          </div>
+        </div>
+  
+        <div class="mc-container">
+          <button class="mc-button"> Leave Meeting </button>
+          <button class="mc-button"> Give Feedback </button>
+          <button class="mc-button"> End Meeting </button>
+        </div>
+  
+      </article>
+    </div>
     <script src="/socket.io/socket.io.js"></script>
     <script src="https://webrtchacks.github.io/adapter/adapter-latest.js"></script>
     <script src="javascripts/main.js"></script>
