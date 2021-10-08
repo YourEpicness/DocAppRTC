@@ -68,8 +68,98 @@ h1 {
     place-content: center;
     height: 100vh;
 
-  h1 {
-    flex: 1 1 auto;
+    .waitroom {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+        .greeting {
+            font-size: 3rem;
+            font-weight: bold;
+            margin: 1.5rem;
+        }
+
+        &__title {
+            margin:1.5rem;
+        }
+
+        &__video {
+            width: 75%;
+            border-radius: 1rem;
+            margin: 2rem;
+        }
+
+    }
+  .nav {
+      position: absolute;
+      display: flex;
+      justify-content: space-between;
+      width: 100vw;
+    //   background-color: var(--color-light-primary);
+    background: var(--background-primary-gradient);
+    padding: 1rem;
+
+    .logo {
+        background-color: white;
+        width: 30%;
+        height: 30%;
+        cursor: pointer;
+        border-radius: 0.75rem;
+
+        &:hover {
+            transition: background-color 0.25s ease-in;
+            background-color: rgba(220, 241, 211, 1);
+        }
+    }
+
+    .navbar {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        .navbar-item {
+            
+            .nav-button {
+                text-decoration: none;
+                background-color: var(--color-dark-red);
+                color: white;
+                font-weight: bold;
+            
+                padding: 1.25rem 2rem;
+                border-radius: 1.5rem;
+                --tw-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+                box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+                &:hover {
+                    transform: translateY(2px);
+                    filter: contrast(200%);
+                }
+            
+                &:active {
+                    transform: translateY(-1px);
+                }  
+            }
+        }
+    }
+
+  }
+
+
+  #call-button {
+    flex: 0 0 auto;
+    box-sizing: border-box;
+    width: 200px;
+  }
+
+  .join {
+    background: #092;
+    color: #EEE;
+  }
+  
+  .leave {
+    background: var(--color-dark-red);
+    color: #EEE;
   }
 }
 
