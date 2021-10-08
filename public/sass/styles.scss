@@ -59,10 +59,14 @@ h1 {
 }
 
 #header {
+    background-color: var(--background-main);
+
   padding-bottom: 13px;
   display: flex;
   flex-wrap: wrap;
   align-items: baseline;
+    place-content: center;
+    height: 100vh;
 
   h1 {
     flex: 1 1 auto;
