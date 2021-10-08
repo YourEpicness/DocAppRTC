@@ -44,6 +44,22 @@ function handleButton(e) {
 	}
 }
 
+function handleChatForm(e) {
+	const log = documeent.querySelector('#chat-log');
+	const form = e.target;
+	const input = form.querySelector('.chat-field');
+	const message = input.value;
+
+	const li = document.createElement('li');
+	li.innerText = message;
+	li.className = 'self';
+
+	log.appendChild(li);
+
+	// Reset chat form when submit
+	input.value = '';
+}
+
 // Socket Server Events and Callbacks
 const namespace = prepareNamespace(window.location.hash, true);
 
@@ -56,6 +72,8 @@ registerScEvents();
 const button = document.querySelector('#call-button');
 
 button.addEventListener('click', handleButton);
+
+message.addEventListener('click', handleChatForm);
 
 document.querySelector('#header h1').innerText = `Welcome to Room #${namespace}`
 
