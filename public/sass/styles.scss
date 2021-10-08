@@ -22,7 +22,40 @@ html {
   font-family: Verdana, Helvetica, Arial, sans-serif;
   font-size: 62.5%;
   line-height: 26px;
-  padding: 13px;
+}
+
+button {
+    font-family: inherit;
+    font-size: inherit;
+    font-weight: bold;
+    border: 0;
+    padding: 1rem;
+    cursor: pointer;
+    border-radius: 1.75rem;
+    --tw-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+    transition: all 0.25sec;
+
+    &:hover {
+        transform: translateY(2px);
+    }
+
+    &:active {
+        transform: translateY(-1px);
+    }  
+}
+
+h1, h2 {
+    font-size:2rem;
+}
+
+h1 {
+    flex: 1 1 auto;
+}
+
+.container {
+    padding: 13px;
+    display: none;
 }
 
 #header {
