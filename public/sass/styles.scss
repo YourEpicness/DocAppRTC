@@ -8,6 +8,16 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
 
 /* Begin site styles below */
 
+
+@import "animations";
+
+:root {
+    --color-black: black;
+    --color-dark-red: #B20B0B;
+    --color-light-primary: #DCF1D3;
+    --background-primary-gradient:linear-gradient(97.44deg, rgba(253, 2, 2, 0.72) 10.07%, rgba(163, 224, 135, 0.49) 84.12%);
+    --background-main:rgba(241, 235, 211, 0.36);
+}
 html {
   font-family: Verdana, Helvetica, Arial, sans-serif;
   font-size: 22px;
