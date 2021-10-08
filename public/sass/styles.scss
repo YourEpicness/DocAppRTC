@@ -164,11 +164,38 @@ h1 {
 }
 
 #videos {
-    border: 2px black solid;
+    display: flex;
+    font-size: 3rem;
+    place-content: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+
+    font-size: 3rem;
     
-    .peer {
-        border: 2px red solid;
+    .cameraview {
+        display: flex;
+        flex-wrap: wrap;
+        border: 2px black solid;
+        width: 95%;
+
+        #self {
+            border: 2px black solid;
+
+        }
+    
+        #peer {
+            border: 2px black solid;
+        }
+
+        .video-label {
+            position: relative;
+            color: red;
+            top: -4rem;
+            left: 0.5rem;
+
+        }
     }
+}
 
     .attendee {
         font-weight: bold;
