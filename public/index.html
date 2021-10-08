@@ -12,25 +12,23 @@
   </head>
   <body>
     <header id="header">
-      <h1>Welcome!</h1>
-      <h2>DocAppRTC Waiting Room</h2>
-      <button type="button" id="call-button">Join Call</button>
-    </header>
-    <article id="videos">
-      <h2 class="attendee">Videos</h2>
-      <video id="self" autoplay muted playsinline></video>
-      <video id="peer" autoplay playsinline></video>
-    </article>
-    <article class="chat">
-      <h2 class="header">Chat</h2>
-      <div class="summary">
-        <h3 class="summary__header"> Appointment Summary</h3>
-        <ul class="summary__text">
-          <li class="summary__title"> Name: <span class="text-field"></span></li>
-          <li class="summary__title"> Reason for visit: <span class="text-field"></span></li>
-          <li class="summary__title"> Symptoms: <span class="text-field"></span></li>
+      <nav class="nav">
+        <img src="images/DocAssistLogo.svg" alt="Logo" class="logo" />
+        
+        <ul class="navbar">
+          <li class="navbar-item"> <a href="#" class="nav-button">Sign In/Up</a> </li>
         </ul>
-      </div>
+      </nav>
+      
+      <main class="waitroom">
+        <h1 class='greeting'>Welcome!</h1>
+        <h2 class='waitroom__title'>DocAppRTC Waiting Room</h2>
+        <p class="waitroom__text">The doctor will be with you shortly...</p>
+        <p class="waitroom__text">Meanwhile, check yourself out! 😁</p>
+        <video id="self" class="waitroom__video" autoplay muted playsinline></video>
+
+        <button type="button" id="call-button" class="join">Join Call</button>
+      </main>
 
       <div class="message">
         <input type="text" class="chat-field">
