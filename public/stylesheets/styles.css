@@ -191,6 +191,12 @@ h1 {
     flex-direction: column;
     background-color: red;
     width: 100%; }
+    .chat .message #chat-log {
+      color: pink; }
+      .chat .message #chat-log .peer {
+        background-color: orangered; }
+      .chat .message #chat-log .self {
+        background-color: palegreen; }
     .chat .message .chat-control {
       display: flex; }
       .chat .message .chat-control .chat-field {

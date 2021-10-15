@@ -46,19 +46,26 @@ function handleButton(e) {
 
 function handleChatForm(e) {
 	e.preventDefault();
-	const log = document.querySelector('#chat-log');
 	const form = e.target;
 	const input = form.querySelector('.chat-field');
 	const message = input.value;
+
+	appendMessage('self', message);
+	
+	$peer.chatChannel.send(message);
+
+	// Reset chat form when submit
+	input.value = '';
+}
+
+function appendMessage(sender, message) {
+	const log = document.querySelector('#chat-log');
 
 	const li = document.createElement('li');
 	li.innerText = message;
 	li.className = 'self';
 
 	log.appendChild(li);
-
-	// Reset chat form when submit
-	input.value = '';
 }
 
 // Socket Server Events and Callbacks
@@ -109,7 +116,7 @@ function establishCallFeatures(peer) {
 		id: 50
 	});
 	peer.chatChannel.onmessage = function({ data }) {
-		console.log('Incoming message:', data);
+		appendMessage('peer', data);
 	}
 }
 
