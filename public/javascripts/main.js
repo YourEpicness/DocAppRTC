@@ -109,6 +109,7 @@ function registerRtcEvents(peer) {
 	peer.connection.onnegotiationneeded = handleRtcNegotiation;
 	peer.connection.onicecandidate = handleIceCandidate;
 	peer.connection.ontrack = handleRtcTrack;
+	peer.connection.ondatachannel = handleRtcDataChannel;
 }
 
 async function handleRtcNegotiation() {
@@ -120,6 +121,12 @@ async function handleRtcNegotiation() {
 		description: $peer.connection.localDescription,
 	})
 	$self.isMakingOffer = false;
+}
+
+function handleRtcDataChannel({ channel }) {
+	console.log('Heard a data channel event', channel);
+	$peer.testChannel = channel
+	console.log('The label is:', $peer.testChannel.label)
 }
 
 function handleIceCandidate({ candidate }) {
