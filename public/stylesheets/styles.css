@@ -70,8 +70,39 @@ h1 {
   flex: 1 1 auto; }
 
 .container {
-  padding: 13px;
-  display: none; }
+  padding: 13px; }
+
+.nav {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  background: var(--background-primary-gradient);
+  padding: 1rem; }
+  .nav .logo {
+    background-color: white;
+    max-width: 14rem;
+    width: 30%;
+    height: 30%;
+    cursor: pointer;
+    border-radius: 0.75rem; }
+  .nav .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: center; }
+    .nav .navbar .navbar-item .nav-button {
+      text-decoration: none;
+      background-color: var(--color-dark-red);
+      color: white;
+      font-weight: bold;
+      padding: 1.25rem 2rem;
+      border-radius: 1.5rem;
+      --tw-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow); }
+      .nav .navbar .navbar-item .nav-button:hover {
+        transform: translateY(2px);
+        filter: contrast(200%); }
+      .nav .navbar .navbar-item .nav-button:active {
+        transform: translateY(-1px); }
 
 #header {
   background-color: var(--background-main);
@@ -97,40 +128,6 @@ h1 {
       width: 75%;
       border-radius: 1rem;
       margin: 2rem; }
-  #header .nav {
-    position: absolute;
-    display: flex;
-    justify-content: space-between;
-    width: 100vw;
-    background: var(--background-primary-gradient);
-    padding: 1rem; }
-    #header .nav .logo {
-      background-color: white;
-      width: 30%;
-      height: 30%;
-      cursor: pointer;
-      border-radius: 0.75rem; }
-      #header .nav .logo:hover {
-        transition: background-color 0.25s ease-in;
-        background-color: #dcf1d3; }
-    #header .nav .navbar {
-      display: flex;
-      align-items: center;
-      justify-content: center; }
-      #header .nav .navbar .navbar-item .nav-button {
-        text-decoration: none;
-        background-color: var(--color-dark-red);
-        color: white;
-        font-weight: bold;
-        padding: 1.25rem 2rem;
-        border-radius: 1.5rem;
-        --tw-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-        box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow); }
-        #header .nav .navbar .navbar-item .nav-button:hover {
-          transform: translateY(2px);
-          filter: contrast(200%); }
-        #header .nav .navbar .navbar-item .nav-button:active {
-          transform: translateY(-1px); }
   #header #call-button {
     flex: 0 0 auto;
     box-sizing: border-box;

@@ -55,16 +55,62 @@ h1 {
 
 .container {
     padding: 13px;
-    display: none;
+    // display: none;
+}
+
+.nav {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+  //   background-color: var(--color-light-primary);
+  background: var(--background-primary-gradient);
+  padding: 1rem;
+
+  .logo {
+      background-color: white;
+      max-width: 14rem;
+      width: 30%;
+      height: 30%;
+      cursor: pointer;
+      border-radius: 0.75rem;
+  }
+
+  .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .navbar-item {
+          
+          .nav-button {
+              text-decoration: none;
+              background-color: var(--color-dark-red);
+              color: white;
+              font-weight: bold;
+          
+              padding: 1.25rem 2rem;
+              border-radius: 1.5rem;
+              --tw-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+              box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+              &:hover {
+                  transform: translateY(2px);
+                  filter: contrast(200%);
+              }
+          
+              &:active {
+                  transform: translateY(-1px);
+              }  
+          }
+      }
+  }
 }
 
 #header {
     background-color: var(--background-main);
-
-  padding-bottom: 13px;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
+    padding-bottom: 13px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
     place-content: center;
     height: 100vh;
 
@@ -92,58 +138,7 @@ h1 {
         }
 
     }
-  .nav {
-      position: absolute;
-      display: flex;
-      justify-content: space-between;
-      width: 100vw;
-    //   background-color: var(--color-light-primary);
-    background: var(--background-primary-gradient);
-    padding: 1rem;
-
-    .logo {
-        background-color: white;
-        width: 30%;
-        height: 30%;
-        cursor: pointer;
-        border-radius: 0.75rem;
-
-        &:hover {
-            transition: background-color 0.25s ease-in;
-            background-color: rgba(220, 241, 211, 1);
-        }
-    }
-
-    .navbar {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-
-        .navbar-item {
-            
-            .nav-button {
-                text-decoration: none;
-                background-color: var(--color-dark-red);
-                color: white;
-                font-weight: bold;
-            
-                padding: 1.25rem 2rem;
-                border-radius: 1.5rem;
-                --tw-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-                box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-                &:hover {
-                    transform: translateY(2px);
-                    filter: contrast(200%);
-                }
-            
-                &:active {
-                    transform: translateY(-1px);
-                }  
-            }
-        }
-    }
-
-  }
+  
 
 
   #call-button {
