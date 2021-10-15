@@ -34,13 +34,13 @@ function displayStream(selector, stream) {
 function handleButton(e) {
 	const button = e.target;
 	if (button.className === 'join') {
-		button.className = 'leave';
-		button.innerText = 'Leave Call';
+		// button.className = 'leave';
+		// button.innerText = 'Leave Call';
 		joinCall();
 	} else {
-		button.className = 'join';
-		button.innerText = 'Join Call';
-		leaveCall();
+		// button.className = 'join';
+		// button.innerText = 'Join Call';
+		// leaveCall();
 	}
 }
 
@@ -71,10 +71,13 @@ registerScEvents();
 // DOM Elements
 
 const button = document.querySelector('#call-button');
+const leave_button = document.querySelector("#leave");
 const chat_form = document.querySelector('.message');
+const wait_room = document.querySelector('#header');
+const call_window = document.querySelector('.container');
 
 button.addEventListener('click', handleButton);
-
+leave_button.addEventListener('click', leaveCall);
 chat_form.addEventListener('submit', handleChatForm);
 
 document.querySelector('#header h1').innerText = `Welcome to Room #${namespace}`
@@ -83,12 +86,16 @@ function joinCall() {
 	sc.open();
 	registerRtcEvents($peer);
 	establishCallFeatures($peer);
+	wait_room.classList.add('hide');
+	call_window.classList.remove('hide');
 }
 
 function leaveCall() {
 	$peer.connection.close();
 	$peer.connection = new RTCPeerConnection($self.rtcConfig);
 	displayStream('#peer', null)
+	wait_room.classList.remove('hide');
+	call_window.classList.add('hide');
 	sc.close();
 }
 

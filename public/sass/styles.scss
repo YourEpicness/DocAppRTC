@@ -53,6 +53,10 @@ h1 {
     flex: 1 1 auto;
 }
 
+.hide {
+    display: none !important;
+}
+
 .container {
     padding: 13px;
     // display: none;
@@ -164,8 +168,6 @@ h1 {
     place-content: center;
     flex-direction: column;
     flex-wrap: wrap;
-
-    font-size: 3rem;
     
     .cameraview {
         display: flex;
@@ -174,8 +176,7 @@ h1 {
         width: 95%;
 
         #self {
-            border: 2px black solid;
-
+            border: 2px orange solid;
         }
     
         #peer {
