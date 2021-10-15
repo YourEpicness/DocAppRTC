@@ -124,9 +124,8 @@ async function handleRtcNegotiation() {
 }
 
 function handleRtcDataChannel({ channel }) {
-	console.log('Heard a data channel event', channel);
-	$peer.testChannel = channel
-	console.log('The label is:', $peer.testChannel.label)
+	console.log('Heard channel', channel.label, 'with ID', channel.id);
+	document.querySelector('#peer').className = channel.label;
 }
 
 function handleIceCandidate({ candidate }) {
