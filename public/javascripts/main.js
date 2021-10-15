@@ -45,7 +45,8 @@ function handleButton(e) {
 }
 
 function handleChatForm(e) {
-	const log = documeent.querySelector('#chat-log');
+	e.preventDefault();
+	const log = document.querySelector('#chat-log');
 	const form = e.target;
 	const input = form.querySelector('.chat-field');
 	const message = input.value;
@@ -70,10 +71,11 @@ registerScEvents();
 // DOM Elements
 
 const button = document.querySelector('#call-button');
+const chat_form = document.querySelector('.message');
 
 button.addEventListener('click', handleButton);
 
-message.addEventListener('click', handleChatForm);
+chat_form.addEventListener('submit', handleChatForm);
 
 document.querySelector('#header h1').innerText = `Welcome to Room #${namespace}`
 
