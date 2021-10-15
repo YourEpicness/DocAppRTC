@@ -131,10 +131,19 @@ async function handleRtcNegotiation() {
 	console.log('RTC negotiation needed...');
 	// send SDP description
 	$self.isMakingOffer = true;
-	await $peer.connection.setLocalDescription();
-	sc.emit('signal', { 
-		description: $peer.connection.localDescription,
-	})
+	try {
+		// modern setLocalDescription
+		await $peer.connection.setLocalDescription();
+	} catch(e) {
+		// fallback for old browsers
+		const offer = await $peer.connection.createOffer();
+		await $peer.connection.setLocalDescription(offer);
+	} finally {
+		// ^...
+		sc.emit('signal', {
+			description: $peer.connection.localDescription
+		});
+	}
 	$self.isMakingOffer = false;
 }
 
@@ -198,10 +207,19 @@ async function handleScSignal({ description, candidate}) {
 		await $peer.connection.setRemoteDescription(description);
 
 		if(description.type === 'offer') {
-			await $peer.connection.setLocalDescription();
-			sc.emit('signal', {
-				description: $peer.connection.localDescription
-			})
+			try {
+				// modern setLocalDescription
+				await $peer.connection.setLocalDescription();
+			} catch(e) {
+				// fallback for old browsers
+				const answer = await $peer.connection.createAnswer();
+				await $peer.connection.setLocalDescription(offer);
+			} finally {
+				// ^...
+				sc.emit('signal', {
+					description: $peer.connection.localDescription
+				});
+			}
 		} else if(candidate) {
 			console.log('Receieved ICE candidate:', candidate);
 		}
@@ -220,6 +238,22 @@ async function handleScSignal({ description, candidate}) {
 }
 
 // Utility Functions
+async function handleFallbackRtc(offerType) {
+	try {
+		// modern setLocalDescription
+		await $peer.connection.setLocalDescription();
+	} catch(e) {
+		// fallback for old browsers
+		const offer = await $peer.connection.offerType;
+		await $peer.connection.setLocalDescription(offer);
+	} finally {
+		// ^...
+		sc.emit('signal', {
+			description: $peer.connection.localDescription
+		});
+	}
+}
+
 function prepareNamespace(hash, set_location) {
 	let ns = hash.replace(/^#/, ''); // remove # from hash
 	if(/^[0-9]{6}$/.test(ns)) {
