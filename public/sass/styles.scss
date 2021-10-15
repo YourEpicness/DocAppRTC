@@ -15,6 +15,7 @@ a,abbr,acronym,address,applet,article,aside,audio,b,big,blockquote,body,canvas,c
     --color-black: black;
     --color-dark-red: #B20B0B;
     --color-light-primary: #DCF1D3;
+    --color-dark-primary: #95d679;
     --background-primary-gradient:linear-gradient(97.44deg, rgba(253, 2, 2, 0.72) 10.07%, rgba(163, 224, 135, 0.49) 84.12%);
     --background-main:rgba(241, 235, 211, 0.36);
 }
@@ -58,8 +59,17 @@ h1 {
 }
 
 .container {
+    background-color: var(--background-main);
     padding: 13px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    place-content: space-around;
     // display: none;
+
+    @media only screen and (min-device-width: 768px) {
+        height: 100vh;
+    }
 }
 
 .nav {
@@ -172,23 +182,32 @@ h1 {
     .cameraview {
         display: flex;
         flex-wrap: wrap;
-        border: 2px black solid;
         width: 95%;
 
-        #self {
-            border: 2px orange solid;
-        }
-    
-        #peer {
-            border: 2px black solid;
+        @media only screen and (min-device-width: 768px) {
+            flex-wrap: nowrap;
         }
 
         .video-label {
             position: relative;
-            color: red;
+            color: white;
             top: -4rem;
             left: 0.5rem;
+        }
 
+
+        .self_container {
+            max-width: 50%;
+
+            #self_video {
+                max-width: 100%;
+            }
+        }
+
+        .peer_container {    
+            #peer {
+                max-width: 100%;
+            }
         }
     }
 }

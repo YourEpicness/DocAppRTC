@@ -20,7 +20,9 @@ requestUserMedia($self.constraints);
 
 async function requestUserMedia(constraints) {
   $self.stream = await navigator.mediaDevices.getUserMedia(constraints);
+  displayStream('#self_video', $self.stream);
   displayStream('#self', $self.stream);
+
 }
 
 // User-Media/DOM
@@ -50,6 +52,7 @@ function handleChatForm(e) {
 	const input = form.querySelector('.chat-field');
 	const message = input.value;
 
+	// const who = 'self' ? $peer.connection.isHost === true : 'peer';
 	appendMessage('self', message);
 	
 	$peer.chatChannel.send(message);
@@ -63,7 +66,7 @@ function appendMessage(sender, message) {
 
 	const li = document.createElement('li');
 	li.innerText = message;
-	li.className = 'self';
+	li.className = sender;
 
 	log.appendChild(li);
 }

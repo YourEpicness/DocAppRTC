@@ -26,7 +26,6 @@
         <p class="waitroom__text">The doctor will be with you shortly...</p>
         <p class="waitroom__text">Meanwhile, check yourself out! 😁</p>
         <video id="self" class="waitroom__video" autoplay muted playsinline></video>
-
         <button type="button" id="call-button" class="join">Join Call</button>
       </main>
 
@@ -35,13 +34,16 @@
     </header>
     <div class="container hide">
       <article id="videos">
-        <h2 class="attendee">You</h2>
+        <h2 class="attendee">Patient Room</h2>
         <div class="cameraview">
-          <video id="self" autoplay muted playsinline></video>
-          <span class="video-label">You</span>
-          <video id="peer" autoplay playsinline></video>
-          <span class="video-label">Doctor</span>
-
+          <div class="self_container">
+            <video id="self_video" autoplay muted playsinline></video>
+            <span class="video-label">You</span>
+          </div>
+          <div class="peer_container">
+            <video id="peer" autoplay playsinline></video>
+            <span class="video-label">Doctor</span>
+          </div>
         </div> 
       </article>
       <article class="chat">
