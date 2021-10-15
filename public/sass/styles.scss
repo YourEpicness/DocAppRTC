@@ -143,6 +143,11 @@ h1 {
 
         &__title {
             margin:1.5rem;
+            font-weight: bold;
+        }
+
+        &__text {
+            font-size: 2rem;
         }
 
         &__video {
@@ -198,13 +203,15 @@ h1 {
 
         .self_container {
             max-width: 50%;
+            padding: 1rem;
 
             #self_video {
                 max-width: 100%;
             }
         }
 
-        .peer_container {    
+        .peer_container { 
+            padding: 1rem;   
             #peer {
                 max-width: 100%;
             }
@@ -260,6 +267,7 @@ h1 {
             .peer {
                 background-color: var(--color-dark-red);
                 text-align: right;
+                color: white;
             }
 
             .self {
@@ -278,6 +286,8 @@ h1 {
                 width: 20%;
                 transform: none;
                 box-shadow: none;
+                color: white;
+                background-color: rgb(77, 66, 66);
 
                 &:hover {
                     filter: contrast(200%);

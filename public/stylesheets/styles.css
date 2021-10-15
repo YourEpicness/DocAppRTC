@@ -135,7 +135,10 @@ h1 {
       font-weight: bold;
       margin: 1.5rem; }
     #header .waitroom__title {
-      margin: 1.5rem; }
+      margin: 1.5rem;
+      font-weight: bold; }
+    #header .waitroom__text {
+      font-size: 2rem; }
     #header .waitroom__video {
       width: 75%;
       border-radius: 1rem;
@@ -170,11 +173,14 @@ h1 {
       top: -4rem;
       left: 0.5rem; }
     #videos .cameraview .self_container {
-      max-width: 50%; }
+      max-width: 50%;
+      padding: 1rem; }
       #videos .cameraview .self_container #self_video {
         max-width: 100%; }
-    #videos .cameraview .peer_container #peer {
-      max-width: 100%; }
+    #videos .cameraview .peer_container {
+      padding: 1rem; }
+      #videos .cameraview .peer_container #peer {
+        max-width: 100%; }
 
 .chat {
   font-size: 2rem;
@@ -208,7 +214,8 @@ h1 {
       flex-direction: column; }
       .chat .message #chat-log .peer {
         background-color: var(--color-dark-red);
-        text-align: right; }
+        text-align: right;
+        color: white; }
       .chat .message #chat-log .self {
         background-color: var(--color-dark-primary); }
     .chat .message .chat-control {
@@ -219,7 +226,9 @@ h1 {
         border-radius: 0;
         width: 20%;
         transform: none;
-        box-shadow: none; }
+        box-shadow: none;
+        color: white;
+        background-color: #4d4242; }
         .chat .message .chat-control .send:hover {
           filter: contrast(200%); }
   .chat .mc-container {
