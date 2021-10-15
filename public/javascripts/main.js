@@ -75,6 +75,7 @@ const leave_button = document.querySelector("#leave");
 const chat_form = document.querySelector('.message');
 const wait_room = document.querySelector('#header');
 const call_window = document.querySelector('.container');
+const wait_video = document.querySelector('.waitroom__video');
 
 button.addEventListener('click', handleButton);
 leave_button.addEventListener('click', leaveCall);
@@ -103,6 +104,13 @@ function leaveCall() {
 function establishCallFeatures(peer) {
 	peer.connection.addTrack($self.stream.getTracks()[0],
 	$self.stream);
+	peer.chatChannel = peer.connection.createDataChannel('chat', {
+		negotiated: true, 
+		id: 50
+	});
+	peer.chatChannel.onmessage = function({ data }) {
+		console.log('Incoming message:', data);
+	}
 }
 
 function registerRtcEvents(peer) {
