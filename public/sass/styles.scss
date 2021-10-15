@@ -35,7 +35,7 @@ button {
     border-radius: 1.75rem;
     --tw-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
-    transition: all 0.25sec;
+    transition: all 0.25s;
 
     &:hover {
         transform: translateY(2px);
@@ -67,7 +67,7 @@ h1 {
     place-content: space-around;
     // display: none;
 
-    @media only screen and (min-device-width: 768px) {
+    @media only screen and (min-width: 768px) {
         height: 100vh;
     }
 }
@@ -189,7 +189,7 @@ h1 {
         flex-wrap: wrap;
         width: 95%;
 
-        @media only screen and (min-device-width: 768px) {
+        @media only screen and (min-width: 768px) {
             flex-wrap: nowrap;
         }
 
